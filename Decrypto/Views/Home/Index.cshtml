@@ -5,52 +5,39 @@
 }
 
 <h2>Clue</h2>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Guess", "Home"))
 {
     <div class="row">
         <div class="col">
             <div class="btn-group btn-group-toggle" id="cluegroup" data-toggle="buttons">
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option1" autocomplete="off"> 1
+                    @Html.RadioButtonFor(model => model.Clue1.Word, 1) 1
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> 2
+                    @Html.RadioButtonFor(model => model.Clue1.Word, 2) 2
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> 3
+                    @Html.RadioButtonFor(model => model.Clue1.Word, 3) 3
                 </label>
                 <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option4" autocomplete="off"> 4
+                    @Html.RadioButtonFor(model => model.Clue1.Word, 4) 4
                 </label>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-8">
             @Html.EditorFor(model => model.Clue1.Hint)
         </div>
-        <div class="btn-group btn-group-toggle col" data-toggle="buttons">
-            <label class="btn btn-secondary">
-                <input type="radio" name="guess" id="guess1" autocomplete="off"> 1
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="guess" id="guess2" autocomplete="off"> 2
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="guess" id="guess3" autocomplete="off"> 3
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="guess" id="guess4" autocomplete="off"> 4
-            </label>
-        </div>
     </div>
-    <button class="" onclick='$("#cluegroup").hide("fast");'>Hide</button>
+    <button class="" onclick='$("#cluegroup").hide("fast"); return false;'>Hide</button>
     <br />
-    <button onclick='$("#cluegroup").show("fast");'>Show</button>
+    <button onclick='$("#cluegroup").show("fast"); return false;'>Show</button>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
+    @Html.HiddenFor(model => model.Id)
 }
 <div>
     @Html.ActionLink("Back to List", "Index")

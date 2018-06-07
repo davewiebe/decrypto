@@ -21,6 +21,23 @@ namespace Decrypto.Controllers
         [HttpPost]
         public ActionResult Index(GameRound gameRound)
         {
+            var gr = _db.GameRounds.Where(x => x.Id == gameRound.Id).Single();
+            gr.Clue1.Hint = gameRound.Clue1.Hint;
+            gr.Clue1.Word = gameRound.Clue1.Word;
+
+            _db.SaveChanges();
+
+            return View(gameRound);
+        }
+
+        [HttpPost]
+        public ActionResult Guess(GameRound gameRound)
+        {
+            var gr = _db.GameRounds.Where(x => x.Id == gameRound.Id).Single();
+            gr.Clue1.Hint = gameRound.Clue1.Hint;
+            gr.Clue1.Word = gameRound.Clue1.Word;
+
+            _db.SaveChanges();
 
             return View(gameRound);
         }
