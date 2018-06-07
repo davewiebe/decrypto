@@ -1,0 +1,26 @@
+﻿@model Decrypto.Models.Clue
+
+@{
+    ViewBag.Title = "Clue";
+}
+
+<h2>Clue</h2>
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option1" autocomplete="off"> 1
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option2" autocomplete="off"> 2
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option3" autocomplete="off"> 3
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option3" autocomplete="off"> 4
+    </label>
+</div>
+
+@Html.DisplayFor(model => model.Word)
+@Html.DisplayFor(model => model.Hint)
+@Html.DisplayFor(model => model.Guess)
