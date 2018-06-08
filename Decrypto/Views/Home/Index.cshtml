@@ -7,8 +7,9 @@
 <h2>Clue</h2>
 @using (Html.BeginForm("Guess", "Home"))
 {
+<div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-sm-auto">
             <div class="btn-group btn-group-toggle" id="cluegroup" data-toggle="buttons">
                 <label class="btn btn-secondary">
                     @Html.RadioButtonFor(model => model.Clue1.Word, 1) 1
@@ -24,25 +25,40 @@
                 </label>
             </div>
         </div>
-        <div class="col-8">
-            @Html.EditorFor(model => model.Clue1.Hint)
+        <div class="col">
+            @Html.TextBoxFor(model => model.Clue1.Hint, new { style = "width:100%;max-width:700px;" })
         </div>
     </div>
-    <button class="" onclick='$("#cluegroup").hide("fast"); return false;'>Hide</button>
-    <br />
-    <button onclick='$("#cluegroup").show("fast"); return false;'>Show</button>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+    <div class="row">
+        <div class="col">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-light" id="btnHide" onclick='doJavascript(); return false;'>Toggle visibility</button>
+        </div>
+        <div class="col text-right">
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
+</div>
     @Html.HiddenFor(model => model.Id)
 }
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        var visible = true;
+        function doJavascript() {
+            if (visible) {
+                $("#cluegroup").hide("fast");
+            } else {
+                $("#cluegroup").show("fast");
+            }
+            visible = !visible;
+        }
+    </script>
+
 }
